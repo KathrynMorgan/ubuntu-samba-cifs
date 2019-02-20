@@ -1,0 +1,46 @@
+[global]
+      security = user
+      server string = smb.braincraft.io
+      server role = standalone server
+      interfaces = lo ens6
+      bind interfaces only = yes
+      disable netbios = yes
+      smb ports = 445
+      log file = /var/log/samba/smb.log
+      max log size = 1000
+      workgroup = BCIO
+      dns proxy = no
+      panic action = /usr/share/samba/panic-action %d
+      obey pam restrictions = yes
+      unix password sync = yes
+      passwd program = /usr/bin/passwd %u
+      passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+      pam password change = yes
+      map to guest = bad user
+      usershare allow guests = yes
+[katamo]
+      path = /samba/katamo
+      browseable = no
+      read only = no
+      force create mode = 0660
+      force directory mode = 2770
+      valid users = katamo
+[public]
+      comment = Public Samba Share
+      path = /samba/public
+      browseable = yes
+      writeable = yes
+      guest ok = yes
+      read only = no
+      create mode = 0777
+      directory mode = 0777
+      force user = nobody
+#######################3
+#log level = 3 passdb:5 auth:5
+      passdb backend = tdbsam
+      #passdb backend = ldapsam:ldap://ipa.braincraft.io
+      #ldap ssl = start tls
+      #ldap suffix = dc=braincraft,dc=io
+      #ldap user suffix = ou=admin
+      #ldap group suffix = ou=admins
+      #ldap admin dn = uid=samba_servers,ou=admin,dc=braincraft,dc=io
