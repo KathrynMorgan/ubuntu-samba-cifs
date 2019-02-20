@@ -1,0 +1,181 @@
+    1  ls
+    2  cp /home/ubuntu/.bashrc ~ -f
+    3  exit
+    4  cd
+    5  clear
+    6  git clone git@gitlab.com:kat.morgan/ubuntu-samba-cifs.git smb
+    7  git clone https://gitlab.com/kat.morgan/ubuntu-samba-cifs.git smb
+    8  clear
+    9  ls
+   10  clear
+   11  ls
+   12  cd smb
+   13  clear
+   14  apt install samba
+   15  clear
+   16  vim /etc/samba/smb.conf 
+   17  systemctl restart samba
+   18  systemctl restart smb
+   19  systemctl list-unit-files | grep -E "smb|samba"
+   20  systemctl restart smbd
+   21  vim /etc/samba/smb.conf 
+   22  mkdir -p /var/samba/share
+   23  systemctl restart smbd
+   24  systemctl status smbd
+   25  clear
+   26  sudo smbpasswd -a admin
+   27  sudo smbpasswd -a ubuntu
+   28  ip a
+   29  mv /var/samba/share/ /var/samba/lab
+   30  mkdir -p /var/samba/share
+   31  vim /etc/samba/smb.conf 
+   32  systemctl restart smbd
+   33  systemctl status smbd
+   34  clear
+   35  vim /etc/samba/smb.conf 
+   36  systemctl restart smbd
+   37  systemctl status smbd
+   38  cd /var/log/
+   39  ls
+   40  cd samba/
+   41  ls
+   42  tail log.192.168.2.2 
+   43  ls cores/
+   44  clear
+   45  lnav *
+   46  apt install lnav -y && lnav *
+   47  mkdir /var/lib/samba/usershares/lab
+   48  systemctl restart smbd
+   49  mkdir /var/lib/samba/usershares/lab
+   50  sudo chown ubuntu:ubuntu /var/lib/samba/usershares/lab
+   51  smbpasswd -a ubuntu
+   52  systemctl restart smbd
+   53  lnav *
+   54  vim /etc/samba/smb.conf 
+   55  clear
+   56  testparm
+   57  clear
+   58  systemctl restart smbd
+   59  testparm
+   60  clear
+   61  ip a
+   62  lnav *
+   63  pdbedit -L
+   64  reboot
+   65  cd
+   66  clear
+   67  ls
+   68  cd smb/
+   69  clear
+   70  sudo apt install tasksel && sudo tasksel install samba-server
+   71  clear
+   72  vim /etc/samba/smb.conf 
+   73  systemctl restart smbd
+   74  $ sudo bash -c 'grep -v -E "^#|^;" /etc/samba/smb.conf_backup | grep . > /etc/samba/smb.conf'
+   75  sudo bash -c 'grep -v -E "^#|^;" /etc/samba/smb.conf_backup | grep . > /etc/samba/smb.conf'
+   76  cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+   77  sudo bash -c 'grep -v -E "^#|^;" /etc/samba/smb.conf.bak | grep . > /etc/samba/smb.conf'
+   78  vim /etc/samba/smb.conf
+   79  passwd ubuntu
+   80  clear
+   81  smbpasswd -a ubuntu
+   82  vim /etc/samba/smb.conf
+   83  mkdir /var/samba
+   84  rm -rf /var/samba/*
+   85  chmod 777 /var/samba
+   86  chmod 777 /var/samba -R
+   87  systemctl restart smbd
+   88  pdbedit -L
+   89  testparm
+   90  vim /etc/samba/smb.conf
+   91  ip a
+   92  vim /etc/samba/smb.conf
+   93  mkdir /samba
+   94  clear
+   95  sudo chown :sambashare /samba/
+   96  mkdir /samba/ubuntu
+   97  mkdir /samba/katamo
+   98  adduser --home /samba/katamo --no-create-home --shell /usr/sbin/nologin --ingroup sambashare david
+   99  adduser --home /samba/katamo --no-create-home --shell /usr/sbin/nologin --ingroup sambashare katamo
+  100  deluser david
+  101  deluser katamo
+  102  adduser --home /samba/katamo --no-create-home --shell /usr/sbin/nologin --ingroup sambashare katamo
+  103  clear
+  104  chown katamo:sambashare /samba/katamo
+  105  chmod 2770 /samba/katamo/
+  106  smbpasswd -a katamo
+  107  smbpasswd -e katamo
+  108  clear
+  109  vim /etc/samba/smb.conf
+  110  systemctl restart smbd
+  111  testparm 
+  112  vim /etc/samba/smb.conf
+  113  clear
+  114  testparm 
+  115  clear
+  116  systemctl restart smbd
+  117  systemctl status smbd
+  118  clear
+  119  mkdir /samba/public
+  120  clear
+  121  sudo adduser --home /samba/public --no-create-home --shell /usr/sbin/nologin --ingroup sambashare admin
+  122  clear
+  123  deluser admin
+  124  sudo adduser --home /samba/public --no-create-home --shell /usr/sbin/nologin --ingroup sambashare admin
+  125  deluser admin
+  126  mkdir /samba/Lab
+  127  mkdir /samba/lab
+  128  rm /samba/Lab/ -rf
+  129  sudo adduser --home /samba/lab --no-create-home --shell /usr/sbin/nologin --ingroup sambashare admin
+  130  clear
+  131  chown admin:sambashare /samba/lab/
+  132  chmod 2770 /samba/lab/
+  133  smbpasswd -a admin
+  134  smbpasswd -e admin
+  135  sudo groupadd admins
+  136  sudo usermod -G admins admin
+  137  clear
+  138  systemctl restart smbd
+  139  ls
+  140  cd /var/log/samba/
+  141  clear
+  142  ls
+  143  lnav smb.log 
+  144  clear
+  145  ls
+  146  cd
+  147  clear
+  148  cd smb/
+  149  clear
+  150  vim /etc/samba/smb.conf
+  151  systemctl restart smb
+  152  systemctl restart smbd
+  153  vim /etc/samba/smb.conf
+  154  systemctl restart smbd
+  155  clear
+  156  vim /etc/samba/smb.conf
+  157  ls /samba/public/
+  158  chmod -R 0775 /samba/public/
+  159  chown -R nobody:nogroup /samba/public/
+  160  systemctl restart smbd
+  161  chown -R nobody:nogroup /samba/public/
+  162  vim /etc/samba/smb.conf
+  163  cp /etc/samba/smb.conf .
+  164  mv smb.conf smb.conf.firstworking
+  165  clear
+  166  vim /etc/samba/smb.conf
+  167  clear
+  168  vim /etc/samba/smb.conf
+  169  clear
+  170  exit
+  171  cd
+  172  clear
+  173  cd
+  174  clear
+  175  history
+  176  ls
+  177  cd smb/
+  178  ls
+  179  cat smb.conf.firstworking 
+  180  cat README.md 
+  181  history >> smb-build-a00.log
